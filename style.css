@@ -1,0 +1,389 @@
+/* ============================================================
+   MINDLY – Birleşik Stil Dosyası
+   Mindly.php + anasayfa.php + tum_kurslar.php
+   ============================================================ */
+
+/* ── RESET & GLOBALS ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* ── CSS DEĞİŞKENLERİ ── */
+:root {
+  --bg-grad:   linear-gradient(135deg, #1a0a2e 0%, #6b2d8b 40%, #c45fa0 70%, #f0c4d4 100%);
+  --surface:   rgba(255,255,255,0.08);
+  --surface2:  rgba(255,255,255,0.13);
+  --border:    rgba(255,255,255,0.15);
+  --border2:   rgba(240,196,212,0.35);
+  --blush:     #f0c4d4;
+  --cyan:      #00d4ff;
+  --green:     #34d399;
+  --amber:     #fbbf24;
+  --text:      #fff;
+  --muted:     rgba(255,255,255,0.45);
+  --font-head: 'Playfair Display', serif;
+  --font-syne: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --sidebar-w: 240px;
+}
+
+/* ── BODY ── */
+body {
+  font-family: var(--font-body);
+  background: var(--bg-grad);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-thumb { background: rgba(240,196,212,0.25); border-radius: 99px; }
+
+/* ── ANİMASYONLAR ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes blink  { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
+
+/* ================================================================
+   MINDLY.PHP – NAVBAR, HERO, KAYIT, KURSLAR, HAKKIMIZDA, İLETİŞİM
+   ================================================================ */
+
+/* ── NAVBAR ── */
+.navbar {
+  background: rgba(26,10,46,0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 0.5px solid var(--border);
+}
+.navbar-brand {
+  font-family: var(--font-head);
+  font-size: 1.45rem;
+  letter-spacing: 5px;
+  color: #fff !important;
+  font-weight: 700;
+}
+.navbar .slogan { font-size: 9px; letter-spacing: 3px; color: rgba(240,196,212,0.65); font-weight: 300; margin-top: 1px; }
+.btn-giris {
+  background: transparent;
+  border: 0.5px solid var(--border2);
+  color: var(--blush);
+  border-radius: 10px;
+  padding: 7px 20px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+}
+.btn-giris:hover { background: rgba(240,196,212,0.15); color: #fff; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  padding-top: 80px;
+  display: flex;
+  align-items: center;
+}
+.hero-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(240,196,212,0.7); font-weight: 300; margin-bottom: 10px; animation: fadeUp 0.5s ease both; }
+.hero-title { font-family: var(--font-head); font-size: clamp(3.5rem, 8vw, 6.5rem); font-weight: 700; line-height: 1; letter-spacing: 6px; animation: fadeUp 0.5s ease 0.08s both; }
+.hero-sub   { font-size: 9px; letter-spacing: 3.5px; color: rgba(240,196,212,0.65); font-weight: 300; text-transform: uppercase; margin-top: 6px; animation: fadeUp 0.5s ease 0.14s both; }
+.hero-desc  { font-family: var(--font-head); font-size: 1.3rem; font-style: italic; color: rgba(255,255,255,0.8); margin-top: 22px; margin-bottom: 32px; animation: fadeUp 0.5s ease 0.2s both; }
+.hero-nav-link {
+  display: inline-block;
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 11px 24px;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+  backdrop-filter: blur(6px);
+}
+.hero-nav-link:hover { background: var(--surface2); border-color: var(--border2); color: #fff; transform: translateY(-2px); }
+
+/* ── SECTION BLOCK ── */
+.section-block { padding: 90px 0; }
+.section-eyebrow { font-size: 9px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--blush); font-weight: 500; margin-bottom: 10px; }
+.section-heading { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; }
+.section-heading em { font-style: italic; color: var(--blush); }
+.section-divider { display: inline-block; width: 36px; height: 1.5px; background: var(--blush); opacity: 0.55; margin-bottom: 10px; }
+
+/* ── HAKKIMIZDA ── */
+#hakkimizda { background: rgba(0,0,0,0.15); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); }
+.about-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: 20px; padding: 32px 36px; backdrop-filter: blur(6px); }
+.about-text { font-size: 0.95rem; line-height: 1.8; color: rgba(255,255,255,0.75); font-weight: 300; }
+
+.stat-pill { background: var(--surface); border: 0.5px solid var(--border); border-radius: 18px; padding: 28px 24px; text-align: center; position: relative; overflow: hidden; transition: background 0.25s, border-color 0.25s, transform 0.25s; backdrop-filter: blur(6px); }
+.stat-pill:hover { background: var(--surface2); border-color: var(--border2); transform: translateY(-4px); }
+.stat-pill::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+.stat-pill.blue::before  { background: linear-gradient(90deg, var(--cyan),  transparent); }
+.stat-pill.pink::before  { background: linear-gradient(90deg, var(--blush), transparent); }
+.stat-pill.green::before { background: linear-gradient(90deg, var(--green), transparent); }
+.stat-pill-val   { font-family: var(--font-syne); font-size: 2.4rem; font-weight: 800; line-height: 1; }
+.stat-pill-label { font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
+
+/* ── TİMLİNE ── */
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before { content: ''; position: absolute; top: 8px; left: 7px; width: 1px; bottom: 8px; background: linear-gradient(to bottom, var(--border2), transparent); }
+.timeline-item { position: relative; padding: 0 0 32px 28px; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot { position: absolute; left: -21px; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: var(--blush); border: 2px solid rgba(240,196,212,0.25); box-shadow: 0 0 12px rgba(240,196,212,0.45); }
+.timeline-year { font-family: var(--font-syne); font-size: 0.72rem; letter-spacing: 2.5px; color: var(--blush); font-weight: 700; margin-bottom: 4px; }
+.timeline-content h5 { font-family: var(--font-head); font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+.timeline-content p  { font-size: 0.83rem; color: var(--muted); font-weight: 300; line-height: 1.6; margin-bottom: 0; }
+
+/* ── KAYIT KARTI ── */
+.kayit-card { background: rgba(255,255,255,0.08); border: 0.5px solid var(--border2); border-radius: 24px; padding: 36px 32px; backdrop-filter: blur(18px); animation: fadeUp 0.6s ease 0.28s both; }
+.kayit-card-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--blush); font-weight: 500; margin-bottom: 6px; }
+.kayit-title { font-family: var(--font-head); font-size: 1.6rem; font-weight: 700; margin-bottom: 4px; }
+.kayit-sub   { font-size: 0.85rem; color: var(--muted); margin-bottom: 24px; font-weight: 300; }
+.kayit-input { background: rgba(255,255,255,0.07) !important; border: 0.5px solid var(--border) !important; color: #fff !important; border-radius: 10px !important; font-family: var(--font-body); font-size: 0.87rem; padding: 12px 16px !important; transition: border-color 0.2s, background 0.2s !important; }
+.kayit-input::placeholder { color: rgba(255,255,255,0.3) !important; }
+.kayit-input:focus { outline: none !important; box-shadow: none !important; border-color: var(--border2) !important; background: rgba(255,255,255,0.12) !important; }
+.form-label  { font-size: 0.78rem; letter-spacing: 0.5px; color: rgba(255,255,255,0.65); font-weight: 400; margin-bottom: 6px; }
+.btn-kayit   { width: 100%; padding: 13px; background: linear-gradient(135deg, #5b21b6, #c45fa0); border: none; border-radius: 14px; color: #fff; font-family: var(--font-body); font-weight: 700; font-size: 0.92rem; cursor: pointer; transition: opacity 0.2s, transform 0.2s; box-shadow: 0 8px 28px rgba(124,58,237,0.35); }
+.btn-kayit:hover { opacity: 0.88; transform: translateY(-2px); }
+.kayit-login   { font-size: 0.82rem; color: var(--muted); text-align: center; margin-top: 14px; }
+.kayit-login a { color: var(--blush); text-decoration: none; font-weight: 500; }
+
+/* ── ALERT ── */
+.alert-danger  { background: rgba(255,80,80,0.12)  !important; border: 0.5px solid rgba(255,80,80,0.35)  !important; color: #ff9b9b !important; border-radius: 12px !important; font-size: 0.85rem; }
+.alert-success { background: rgba(52,211,153,0.12) !important; border: 0.5px solid rgba(52,211,153,0.35) !important; color: #6ee7b7 !important; border-radius: 12px !important; font-size: 0.85rem; }
+.alert-success a { color: var(--blush); font-weight: 600; }
+
+/* ── KURSLAR Mindly.php – statik tanıtım kartları ── */
+#kurslar { border-top: 0.5px solid var(--border); }
+.courses-intro { font-size: 1rem; color: var(--muted); max-width: 640px; line-height: 1.7; margin-top: 8px; margin-bottom: 40px; font-weight: 300; }
+.course-icon     { font-size: 2.2rem; margin-bottom: 14px; display: block; }
+.course-category { font-family: var(--font-syne); font-size: 0.65rem; color: var(--cyan); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+.course-title    { font-family: var(--font-head); font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; line-height: 1.3; }
+.course-students { font-size: 0.68rem; color: var(--muted); }
+.course-level    { font-size: 0.65rem; padding: 3px 10px; border-radius: 20px; font-weight: 700; letter-spacing: 1.5px; }
+.level-beginner     { background: rgba(52,211,153,0.15);  color: var(--green); }
+.level-intermediate { background: rgba(0,212,255,0.12);   color: var(--cyan); }
+.level-advanced     { background: rgba(240,196,212,0.15); color: var(--blush); }
+
+/* ── İLETİŞİM ── */
+#iletisim { background: rgba(0,0,0,0.15); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); }
+.iletisim-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: 20px; padding: 32px 36px; backdrop-filter: blur(6px); }
+.iletisim-link { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 0.5px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.88rem; font-weight: 300; transition: color 0.2s; }
+.iletisim-link:last-child  { border-bottom: none; padding-bottom: 0; }
+.iletisim-link:first-child { padding-top: 0; }
+.iletisim-link:hover { color: var(--blush); }
+.iletisim-link .icon   { font-size: 1.15rem; width: 22px; text-align: center; flex-shrink: 0; }
+.iletisim-link strong  { font-weight: 600; color: #fff; font-size: 0.78rem; letter-spacing: 0.5px; display: block; margin-bottom: 1px; }
+
+/* ── FOOTER ── */
+.site-footer   { padding: 32px 0; text-align: center; border-top: 0.5px solid var(--border); }
+.site-footer p { font-size: 0.75rem; color: var(--muted); font-weight: 300; letter-spacing: 0.5px; margin: 0; }
+
+/* ================================================================
+   SIDEBAR + MAIN – anasayfa.php, tum_kurslar.php
+   ================================================================ */
+
+/* ── SIDEBAR ── */
+.sidebar {
+  position: fixed; top: 0; left: 0;
+  width: var(--sidebar-w); height: 100vh;
+  background: rgba(26,10,46,0.55);
+  border-right: 0.5px solid var(--border);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  display: flex; flex-direction: column;
+  padding: 30px 20px; z-index: 200;
+}
+.logo-wrap { margin-bottom: 6px; }
+.sidebar .logo {
+  font-family: var(--font-head);
+  font-size: 1.45rem; font-weight: 700;
+  letter-spacing: 5px; color: var(--text);
+  text-decoration: none; display: block;
+}
+.sidebar .slogan { font-size: 9px; letter-spacing: 3px; color: rgba(240,196,212,0.65); font-weight: 300; margin-top: 3px; }
+.nav-section { margin-top: 38px; flex: 1; }
+.nav-label   { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); padding-left: 12px; margin-bottom: 10px; }
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; border-radius: 12px;
+  color: var(--muted); text-decoration: none;
+  font-size: 0.87rem; font-weight: 400; letter-spacing: 0.3px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  border: 0.5px solid transparent; margin-bottom: 4px;
+}
+.nav-item:hover  { background: var(--surface);             color: var(--text);  border-color: var(--border);  }
+.nav-item.active { background: rgba(240,196,212,0.15);     color: var(--blush); border-color: var(--border2); }
+.nav-item .icon  { font-size: 1rem; width: 20px; text-align: center; flex-shrink: 0; }
+.sidebar-bottom  { margin-top: auto; }
+
+.user-pill  { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: var(--surface); border: 0.5px solid var(--border); border-radius: 14px; margin-bottom: 10px; }
+.avatar     { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #c45fa0, #6b2d8b); display: flex; align-items: center; justify-content: center; font-family: var(--font-syne); font-weight: 700; font-size: 1rem; flex-shrink: 0; border: 1.5px solid rgba(240,196,212,0.5); }
+.user-name  { font-size: 0.82rem; font-weight: 600; color: var(--text); }
+.user-since { font-size: 0.68rem; color: var(--muted); margin-top: 1px; }
+
+.btn-logout { width: 100%; padding: 9px; background: transparent; border: 0.5px solid var(--border); border-radius: 12px; color: var(--muted); font-family: var(--font-body); font-size: 0.82rem; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.btn-logout:hover { background: rgba(255,80,80,0.12); color: #ff8080; border-color: rgba(255,80,80,0.35); }
+
+/* ── MAIN ── */
+.main { margin-left: var(--sidebar-w); padding: 40px 44px; min-height: 100vh; }
+
+/* ================================================================
+   ANASAYFA.PHP – TOPBAR, STATS, DEVAM ET, BOŞ DURUM, KURS GRID
+   ================================================================ */
+
+/* ── TOPBAR ── */
+.topbar { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; animation: fadeUp 0.5s ease both; }
+.greeting-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(240,196,212,0.7); font-weight: 300; margin-bottom: 8px; }
+.greeting       { font-family: var(--font-head); font-size: 2.1rem; font-weight: 700; line-height: 1.2; }
+.greeting em    { font-style: italic; color: var(--blush); }
+.sub-greeting   { color: var(--muted); font-size: 0.85rem; margin-top: 6px; font-weight: 300; }
+.date-badge     { background: var(--surface); border: 0.5px solid var(--border); border-radius: 12px; padding: 10px 18px; font-size: 0.78rem; color: var(--muted); backdrop-filter: blur(6px); white-space: nowrap; }
+
+/* ── STATS ── */
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+.stat-card {
+  background: var(--surface); border: 0.5px solid var(--border);
+  border-radius: 18px; padding: 24px 26px;
+  position: relative; overflow: hidden;
+  backdrop-filter: blur(6px);
+  cursor: default;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+  animation: fadeUp 0.5s ease both;
+}
+.stat-card:hover { background: var(--surface2); border-color: var(--border2); transform: translateY(-3px); }
+.stat-card:nth-child(1) { animation-delay: 0.08s; }
+.stat-card:nth-child(2) { animation-delay: 0.15s; }
+.stat-card:nth-child(3) { animation-delay: 0.22s; }
+.stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+.stat-card.blue::before   { background: linear-gradient(90deg, var(--cyan),    transparent); }
+.stat-card.purple::before { background: linear-gradient(90deg, #c45fa0,        transparent); }
+.stat-card.green::before  { background: linear-gradient(90deg, var(--green),   transparent); }
+.stat-card::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(240,196,212,0.07) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s; }
+.stat-card:hover::after { opacity: 1; }
+.stat-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+.stat-value { font-family: var(--font-syne); font-size: 2.2rem; font-weight: 800; margin-top: 8px; line-height: 1; }
+.stat-sub   { font-size: 0.72rem; color: var(--muted); margin-top: 6px; font-weight: 300; }
+
+/* ── DEVAM ET ── */
+.continue-card {
+  background: rgba(255,255,255,0.1); border: 0.5px solid rgba(240,196,212,0.25);
+  border-radius: 18px; padding: 26px 30px;
+  display: flex; align-items: center; gap: 22px;
+  margin-bottom: 32px; backdrop-filter: blur(8px);
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+  animation: fadeUp 0.5s ease 0.28s both; cursor: pointer;
+}
+.continue-card:hover { background: rgba(255,255,255,0.15); border-color: var(--border2); transform: translateY(-3px); }
+.continue-icon  { font-size: 2.6rem; flex-shrink: 0; }
+.continue-badge { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blush); font-weight: 500; margin-bottom: 5px; display: flex; align-items: center; gap: 7px; }
+.live-dot       { width: 7px; height: 7px; border-radius: 50%; background: var(--blush); animation: blink 2s infinite; flex-shrink: 0; }
+.continue-title { font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; line-height: 1.3; }
+.continue-sub   { font-size: 0.8rem; color: var(--muted); margin-top: 4px; font-weight: 300; }
+.btn-continue   { margin-left: auto; background: rgba(240,196,212,0.2); color: var(--blush); border: 0.5px solid rgba(240,196,212,0.45); border-radius: 12px; padding: 11px 22px; font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; cursor: pointer; white-space: nowrap; letter-spacing: 0.5px; transition: background 0.2s, color 0.2s; text-decoration: none; display: inline-block; }
+.btn-continue:hover { background: rgba(240,196,212,0.35); color: #fff; }
+
+/* ── BOŞ DURUM ── */
+.empty-state       { text-align: center; padding: 48px 24px; background: var(--surface); border: 0.5px solid var(--border); border-radius: 18px; margin-bottom: 32px; animation: fadeUp 0.5s ease 0.28s both; }
+.empty-state .empty-icon { font-size: 2.8rem; margin-bottom: 14px; display: block; }
+.empty-state p     { color: var(--muted); font-size: 0.88rem; font-weight: 300; margin-bottom: 18px; }
+.btn-kesfet        { display: inline-block; padding: 11px 26px; background: linear-gradient(135deg, #5b21b6, #c45fa0); border-radius: 12px; color: #fff; font-family: var(--font-body); font-weight: 700; font-size: 0.85rem; text-decoration: none; transition: opacity 0.2s, transform 0.2s; box-shadow: 0 6px 20px rgba(124,58,237,0.3); }
+.btn-kesfet:hover  { opacity: 0.88; transform: translateY(-2px); color: #fff; }
+
+/* ── SECTION HEAD ── */
+.section-head  { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.section-title { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.section-line  { display: inline-block; width: 24px; height: 1.5px; background: var(--blush); opacity: 0.6; vertical-align: middle; }
+.see-all       { font-size: 0.78rem; color: var(--blush); text-decoration: none; letter-spacing: 0.5px; font-weight: 500; transition: opacity 0.2s; }
+.see-all:hover { opacity: 0.7; }
+
+/* ── İLERLEME ÇUBUĞU ── */
+.progress-bar  { background: rgba(255,255,255,0.12); border-radius: 99px; height: 5px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, #c45fa0, #f0c4d4); transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
+.progress-label { display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--muted); margin-top: 7px; }
+.progress-label strong { color: var(--blush); font-weight: 600; }
+
+/* ── KURS GRID (anasayfa + tum_kurslar) ── */
+.courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 16px; margin-bottom: 32px; }
+.courses-grid .course-card { animation: fadeUp 0.5s ease both; }
+.courses-grid .course-card:nth-child(1) { animation-delay: 0.12s; }
+.courses-grid .course-card:nth-child(2) { animation-delay: 0.19s; }
+.courses-grid .course-card:nth-child(3) { animation-delay: 0.26s; }
+
+.course-card {
+  background: rgba(255,255,255,0.07); border: 0.5px solid var(--border);
+  border-radius: 20px; padding: 26px;
+  height: 100%; display: flex; flex-direction: column;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+  backdrop-filter: blur(4px); position: relative; overflow: hidden; cursor: pointer;
+}
+.course-card::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(240,196,212,0.08) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+.course-card:hover  { background: rgba(255,255,255,0.13); border-color: var(--border2); transform: translateY(-5px); }
+.course-card:hover::after { opacity: 1; }
+
+.course-emoji    { font-size: 2rem; margin-bottom: 12px; display: block; }
+.course-cat      { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blush); font-weight: 500; margin-bottom: 6px; }
+.course-name     { font-family: var(--font-head); font-size: 1rem; font-weight: 700; line-height: 1.35; margin-bottom: 4px; }
+.course-desc     { font-size: 0.8rem; color: var(--muted); line-height: 1.65; margin-bottom: 20px; font-weight: 300; flex: 1; }
+.courses-grid .course-meta { font-size: 0.73rem; color: var(--muted); margin-bottom: 16px; font-weight: 300; display: block; border: none; padding: 0; }
+
+/* ================================================================
+   TUM_KURSLAR.PHP – SAYFA BAŞLIĞI, FİLTRE, KART DETAYLARI, SAYFALAMA
+   ================================================================ */
+
+/* ── PAGE HEADER ── */
+.page-header  { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; animation: fadeUp 0.45s ease both; flex-wrap: wrap; gap: 16px; }
+.page-eyebrow { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: rgba(240,196,212,0.65); font-weight: 300; margin-bottom: 8px; }
+.page-title   { font-family: var(--font-head); font-size: 2.2rem; font-weight: 700; line-height: 1.15; }
+.page-title em { font-style: italic; color: var(--blush); }
+.page-sub     { font-size: 0.85rem; color: var(--muted); margin-top: 6px; font-weight: 300; }
+
+/* ── FLASH ── */
+.flash        { border-radius: 14px; padding: 14px 20px; font-size: 0.88rem; margin-bottom: 24px; animation: fadeUp 0.3s ease both; display: flex; align-items: center; gap: 10px; }
+.flash.basari { background: rgba(52,211,153,0.12); border: 0.5px solid rgba(52,211,153,0.35); color: var(--green); }
+.flash.hata   { background: rgba(248,113,113,0.12); border: 0.5px solid rgba(248,113,113,0.35); color: #f87171; }
+
+/* ── FİLTRE ÇUBUĞU ── */
+.filter-bar    { display: flex; gap: 10px; margin-bottom: 28px; align-items: center; flex-wrap: wrap; animation: fadeUp 0.45s ease 0.06s both; }
+.filter-label  { font-size: 0.78rem; color: var(--muted); white-space: nowrap; }
+.filter-select { padding: 8px 32px 8px 14px; background: var(--surface); border: 0.5px solid var(--border); border-radius: 99px; color: var(--text); font-family: var(--font-body); font-size: 0.82rem; cursor: pointer; outline: none; transition: border-color 0.2s; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='rgba(255,255,255,0.4)' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
+.filter-select:focus { border-color: var(--border2); }
+.filter-count  { margin-left: auto; font-size: 0.78rem; color: var(--muted); }
+
+/* ── KART ÜST ── */
+.card-top  { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+.level-tag { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; padding: 3px 10px; border-radius: 99px; border: 0.5px solid; }
+.level-tag.basla { color: var(--green); border-color: rgba(52,211,153,0.4);  background: rgba(52,211,153,0.1); }
+.level-tag.orta  { color: var(--amber); border-color: rgba(251,191,36,0.4);  background: rgba(251,191,36,0.1); }
+.level-tag.ileri { color: #f87171;      border-color: rgba(248,113,113,0.4); background: rgba(248,113,113,0.1); }
+
+.course-meta-row { display: flex; align-items: center; justify-content: space-between; margin: 16px 0 0; padding-top: 14px; border-top: 0.5px solid rgba(255,255,255,0.08); }
+.meta-chip       { font-size: 0.72rem; color: var(--muted); display: flex; align-items: center; gap: 4px; }
+
+/* ── KURS FOOTER (fiyat + buton) ── */
+.course-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; padding-top: 14px; border-top: 0.5px solid rgba(255,255,255,0.08); gap: 12px; }
+.course-price     { font-family: var(--font-syne); font-size: 1.2rem; font-weight: 800; color: var(--blush); letter-spacing: 0.5px; white-space: nowrap; }
+.course-price sup { font-size: 0.6rem; vertical-align: super; font-weight: 600; }
+.price-free       { color: var(--green); font-size: 1rem; }
+.btn-satin-al     { padding: 9px 18px; background: linear-gradient(135deg, #5b21b6, #c45fa0); border: none; border-radius: 10px; color: #fff; font-family: var(--font-body); font-weight: 700; font-size: 0.78rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: opacity 0.18s, transform 0.15s; box-shadow: 0 6px 20px rgba(124,58,237,0.3); white-space: nowrap; letter-spacing: 0.3px; position: relative; z-index: 2; }
+.btn-satin-al:hover { opacity: 0.85; transform: translateY(-2px); color: #fff; }
+
+/* ── KAYITLI BUTON ── */
+.btn-kayitli { padding: 10px 18px; border-radius: 10px; background: rgba(52,211,153,0.12); color: var(--green); border: 0.5px solid rgba(52,211,153,0.35); font-family: var(--font-body); font-size: 0.8rem; font-weight: 700; cursor: default; white-space: nowrap; letter-spacing: 0.3px; display: inline-flex; align-items: center; gap: 6px; }
+
+/* ── SAYFALAMA ── */
+.pagination { display: flex; justify-content: center; gap: 8px; margin-top: 8px; margin-bottom: 40px; flex-wrap: wrap; }
+.pagination a, .pagination span { padding: 8px 18px; border-radius: 99px; font-size: 0.82rem; text-decoration: none; border: 0.5px solid var(--border); color: var(--muted); transition: all 0.15s; }
+.pagination a:hover { border-color: var(--border2); color: var(--blush); }
+.pagination span    { background: rgba(240,196,212,0.18); color: var(--blush); border-color: var(--border2); font-weight: 600; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main    { margin-left: 0; padding: 24px 18px; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .page-header { flex-direction: column; align-items: flex-start; }
+  .topbar      { flex-direction: column; gap: 12px; }
+}
